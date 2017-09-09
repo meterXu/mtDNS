@@ -20,7 +20,7 @@ exports.analysisDns = function () {
     aliClient.get("/",param ).then(function (data) {
         console.log(new Date()+ ": 域名修改成功");
     }).catch(function (err) {
-        console.log(new Date()+"：域名修改失败"+err)
+        console.log(new Date()+"：域名修改失败，"+err.body.Message)
     })
 
 }

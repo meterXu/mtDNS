@@ -2,25 +2,14 @@
     "gobal": {
         "apiAddress": "https://alidns.aliyuncs.com",
         "ipaddressUrl": "http://www.yxxrui.cn/yxxrui_cabangs_api/myip.ashx",
-        "interval": 1000,
-        "AccessKeyId":"wmyAKvF6abTlx9Co",
-        "AccessKeySecret":"zhKrHEfuUzvdN3xoBTc0bNZUg06SjF"
+        "AccessKeyId":"",
+        "AccessKeySecret":""
     },
     "param":{
         "Action":"UpdateDomainRecord",
-        "RecordId":"3541041362684928",
+        "RecordId":"",
         "RR":"www",
         "Type":"A",
-        "Value":"",
         "Priority":1
-    },
-    "publicParam":{
-        "Format":"JSON",
-        "Version":"2015-01-09",
-        "AccessKeyId":"",
-        "SignatureMethod":"HMAC-SHA1",
-        "Timestamp":"",
-        "SignatureVersion":"1.0",
-        "SignatureNonce":""
     }
 }
