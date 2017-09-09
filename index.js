@@ -6,6 +6,7 @@ var saveIp;
 /**
  * 循环执行，判断ip是否变化，ip变化则解析域名,默认每分钟的第30秒触发
  */
+console.log("在每分钟的第30秒开始域名解析,请耐心等待...")
 schedule.scheduleJob("30 * * * * *", function () {
     watchIpChange();
 });
