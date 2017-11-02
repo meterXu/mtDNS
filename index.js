@@ -8,9 +8,8 @@ var saveIp;
  */
 console.log("在每分钟的第30秒开始域名解析,请耐心等待...")
 schedule.scheduleJob("30 * * * * *", function () {
-    watchIpChange();
+   watchIpChange();
 });
-
 function watchIpChange() {
     try {
         //获取ip地址
@@ -26,7 +25,7 @@ function watchIpChange() {
         });
     }
     catch (e) {
-        //ingore
+        console.log(new Date() + "：获取IP地址失败")
     }
 }
 
