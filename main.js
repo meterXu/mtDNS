@@ -1,22 +1,15 @@
 var request = require('request');
-var config = require('./config');
-let AliCloudClient = require("aliyun-apisign");
+var config = require('./config.json');
+var AliCloudClient = require("aliyun-apisign");
 var privateIp;
-let aliClient = new AliCloudClient({
-    AccessKeyId: config.gobal().AccessKeyId,
-    AccessKeySecret: config.gobal().AccessKeySecret,
-    serverUrl: config.gobal().apiAddress
+var aliClient = new AliCloudClient({
+    AccessKeyId: config.gobal.AccessKeyId,
+    AccessKeySecret: config.gobal.AccessKeySecret,
+    serverUrl: config.gobal.apiAddress
 });
-//获取ip地址
-exports.getIp = function (success) {
-    request(config.gobal().ipaddressUrl, function (error, response, body) {
-        privateIp = body;
-        success(body);
-    });
-}
 //域名解主程序
 var analysisRecords=function (){
-    let param=config.param();
+    let param=config.param;
     aliClient.get("/", {
         Action: "DescribeDomainRecords",
         DomainName: "isaacxu.com",
@@ -40,12 +33,18 @@ var analysisRecords=function (){
 
 
     }).catch(function (err) {
-        console.log(new Date()+ ": 获取解析记录["+config.param().RR+"]失败");
+        console.log(new Date()+ ": 获取解析记录["+config.param.RR+"]失败");
     })
-}
+};
 
-
+//获取ip地址
+exports.getIp = function (success) {
+    request(config.gobal.ipaddressUrl, function (error, response, body) {
+        privateIp = body;
+        success(body);
+    });
+};
 //域名解析
 exports.analysisDns = function () {
     analysisRecords();
-}
+};

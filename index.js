@@ -1,6 +1,5 @@
 var main = require("./main");
-var config = require('./config');
-let schedule = require("node-schedule");
+var schedule = require("node-schedule");
 var saveIp;
 
 /**
@@ -10,23 +9,23 @@ console.log("在每分钟的第30秒开始域名解析,请耐心等待...")
 schedule.scheduleJob("30 * * * * *", function () {
    watchIpChange();
 });
-function watchIpChange() {
+var watchIpChange=function() {
     try {
         //获取ip地址
         main.getIp(function (ip) {
 
             if (saveIp != ip) {
                 saveIp = ip;
-                console.log(new Date() + "：开始域名解析")
+                console.log(new Date() + "：开始域名解析");
                 main.analysisDns();
             } else {
-                console.log(new Date() + "：IP未变化不解析域名")
+                console.log(new Date() + "：IP未变化不解析域名");
             }
         });
     }
     catch (e) {
-        console.log(new Date() + "：获取IP地址失败")
+        console.log(new Date() + "：获取IP地址失败");
     }
-}
+};
 
 
