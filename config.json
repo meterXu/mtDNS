@@ -2,13 +2,13 @@
     "gobal": {
         "apiAddress": "https://alidns.aliyuncs.com",
         "ipaddressUrl": "http://www.yxxrui.cn/yxxrui_cabangs_api/myip.ashx",
-        "AccessKeyId":"",//阿里云AccessKeyId
-        "AccessKeySecret":"",//阿里云AccessKeySecret
-        "DomainName":"demo.com"//域名
+        "AccessKeyId":"",
+        "AccessKeySecret":"",
+        "DomainName":"demo.com"
     },
     "param":{
-        "RRKeyWord":"www",//需要解析的记录名，
-        "Type":"A",//解析记录类型
+        "RRKeyWord":"app",
+        "Type":"A",
         "Priority":1
     }
 }
