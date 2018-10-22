@@ -2,12 +2,12 @@
     "gobal": {
         "apiAddress": "https://alidns.aliyuncs.com",
         "ipaddressUrl": "http://www.yxxrui.cn/yxxrui_cabangs_api/myip.ashx",
-        "AccessKeyId":"wmyAKvF6abTlx9Co",
-        "AccessKeySecret":"zhKrHEfuUzvdN3xoBTc0bNZUg06SjF",
-        "DomainName":"isaacxu.com"
+        "AccessKeyId":"",
+        "AccessKeySecret":"",
+        "DomainName":"demo.com"
     },
     "param":{
-        "RRKeyWord":"app2",
+        "RRKeyWord":"demo",
         "Type":"A",
         "Priority":1
     }
