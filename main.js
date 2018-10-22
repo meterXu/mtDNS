@@ -12,7 +12,7 @@ var analysisRecords=function (){
     let param=config.param;
     aliClient.get("/", {
         Action: "DescribeDomainRecords",
-        DomainName: "isaacxu.com",
+        DomainName: config.gobal.DomainName,
         RRKeyWord:param.RRKeyWord
     }).then(function (data) {
         if(data.body.DomainRecords.Record.length>0){
@@ -29,11 +29,18 @@ var analysisRecords=function (){
             }).catch(function (err) {
                 console.log(new Date()+"：域名修改失败，"+err.body.Message)
             });
+        }else{
+            aliClient.get('/',{
+                Action:"AddDomainRecord",
+                DomainName:config.gobal.DomainName,
+                RR:param.RRKeyWord,
+                Type:param.Type,
+                Value:privateIp,
+                Priority:param.Priority
+            });
         }
-
-
     }).catch(function (err) {
-        console.log(new Date()+ ": 获取解析记录["+config.param.RR+"]失败");
+        console.log(new Date()+ ": 获取解析记录["+param.RRKeyWord+"]失败");
     })
 };
 
