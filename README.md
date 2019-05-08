@@ -1,5 +1,6 @@
 # mtDNS
-![tag](https://img.shields.io/github/tag/meterXu/mtDNS.svg) 
+![tag](https://img.shields.io/github/tag/meterXu/mtDNS.svg)
+
 定时 **(每一分钟的第30秒)** 获取ip，然后到阿里云去解析dns
 # 关于配置文件config.json
 ## 每个配置节点说明
