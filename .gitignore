@@ -10,3 +10,4 @@
 .idea/vcs.xml
 .idea/vcs.xml
 *.xml
+.node_modules/

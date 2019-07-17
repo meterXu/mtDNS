@@ -6,9 +6,13 @@
         "AccessKeySecret":"",
         "DomainName":"demo.com"
     },
-    "param":{
-        "RRKeyWord":"demo",
+    "param":[{
+        "RRKeyWord":"xz1",
         "Type":"A",
         "Priority":1
-    }
+    },{
+        "RRKeyWord":"xz2",
+        "Type":"A",
+        "Priority":1
+    }]
 }
