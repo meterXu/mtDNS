@@ -59,6 +59,7 @@ var dnslog = function(param,msg) {
 //获取ip地址
 exports.getIp = function (success) {
     request(config.gobal.ipaddressUrl, function (error, response, body) {
+        body = body.trimEnd('/n');
         privateIp = body;
         success(body);
     });

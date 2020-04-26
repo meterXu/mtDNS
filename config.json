@@ -1,7 +1,7 @@
 {
     "gobal": {
         "apiAddress": "https://alidns.aliyuncs.com",
-        "ipaddressUrl": "http://www.yxxrui.cn/yxxrui_cabangs_api/myip.ashx",
+        "ipaddressUrl": "https://ipconfig.io/ip",
         "AccessKeyId":"",
         "AccessKeySecret":"",
         "DomainName":"demo.com"
