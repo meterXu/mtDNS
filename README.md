@@ -2,6 +2,9 @@
 ![tag](https://img.shields.io/github/tag/meterXu/mtDNS.svg)
 ![license](https://img.shields.io/github/license/meterXu/mtDNS.svg)  
 >动态域名解析服务，适用于阿里云购买的域名
+
+![mtDNS](http://7u.isaacxu.com/mtDns.png)
+
 ## 快速开始
 1. 克隆项目
 ```
@@ -26,4 +29,4 @@ node index.js
 * Type 解析记录类型格式 [参考网站](https://help.aliyun.com/document_detail/29805.html?spm=5176.doc29774.2.1.2IvBqd)
 * Priority 解析优先级 **按需修改**
 ### 自动生成配置文件脚本
-运行config.py，按提示操作。（暂时只支持解析A记录）
+运行config.py，按提示操作。
