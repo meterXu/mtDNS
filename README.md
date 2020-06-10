@@ -1,7 +1,7 @@
 # mtDNS
 ![tag](https://img.shields.io/github/tag/meterXu/mtDNS.svg)
 ![license](https://img.shields.io/github/license/meterXu/mtDNS.svg)  
->解析dns，适用于阿里云购买的域名
+>动态域名解析服务，适用于阿里云购买的域名
 ## 快速开始
 1. 克隆项目
 ```
