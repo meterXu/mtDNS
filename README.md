@@ -28,5 +28,5 @@ node index.js
 * RRKeyWord **设置需要解析的子域名**
 * Type 解析记录类型格式 [参考网站](https://help.aliyun.com/document_detail/29805.html?spm=5176.doc29774.2.1.2IvBqd)
 * Priority 解析优先级 **按需修改**
-### 自动生成配置文件脚本
-运行config.py，按提示操作。
+### 生成配置文件
+运行config.py，按提示操作，即可快速生成配置文件
