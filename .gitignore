@@ -1,13 +1,4 @@
-
-.idea/workspace.xml
-.idea/vcs.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/mtDNS.iml
-.idea/vcs.xml
-.idea/watcherTasks.xml
-.idea/vcs.xml
-.idea/vcs.xml
-.idea/vcs.xml
+.vscode/
+.idea/
 *.xml
 .node_modules/
