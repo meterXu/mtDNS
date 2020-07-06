@@ -1,7 +1,7 @@
 {
     "gobal": {
         "apiAddress": "https://alidns.aliyuncs.com",
-        "ipaddressUrl": "http://isaacxu.com:8082/api/ip",
+        "ipaddressUrl": "https://ip.isaacxu.com/api/ip",
         "AccessKeyId":"",
         "AccessKeySecret":"",
         "DomainName":"demo.com"
