@@ -1,5 +1,5 @@
 const request = require('request');
-const config = require('./config.json');
+const config = require('./config.js');
 const AliCloudClient = require("aliyun-apisign");
 let privateIp;
 const aliClient = new AliCloudClient({

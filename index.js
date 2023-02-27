@@ -1,4 +1,4 @@
-const main = require("./dns");
+const main = require("./src/dns");
 const schedule = require("node-schedule");
 let saveIp;
 
