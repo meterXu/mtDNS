@@ -1,16 +1,18 @@
-const fs=require('fs');
-const file="config.json";
-let result;
-exports.global = function()
-{
-    if(!result){
-        result=JSON.parse(fs.readFileSync(file));
-    }
-    return result.global;
-}
-exports.param=function(){
-    if(!result){
-        result=JSON.parse(fs.readFileSync(file));
-    }
-    return result.param;
+exports.config = {
+    "global": {
+        "apiAddress": "https://alidns.aliyuncs.com",
+        "ipaddressUrl": "https://ip.isaacxu.com/api/ip",
+        "AccessKeyId":process.env.AccessKeyId,
+        "AccessKeySecret":process.env.AccessKeySecret,
+        "DomainName":process.env.DomainName
+    },
+    "param":[{
+        "RRKeyWord":"server",
+        "Type":"A",
+        "Priority":1
+    },{
+        "RRKeyWord":"ngrok",
+        "Type":"A",
+        "Priority":1
+    }]
 }
