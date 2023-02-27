@@ -57,7 +57,7 @@ const analysisRecords=function (){
 };
 
 const dnsLog = function(param,msg) {
-    console.log(new Date()+"：域名["+param.Type+","+param.RRKeyWord+","+param.Priority+"]，"+msg);
+    console.log(`${new Date()}：域名[${param.Type},${param.RRKeyWord},${param.Priority},${param.DomainName}]，${msg}`);
 }
 
 //获取ip地址
