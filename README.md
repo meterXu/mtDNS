@@ -15,7 +15,8 @@
 ## 不支持项
 - [ ] 解析泛域名
 
-## 快速开始
+## 快速开始  
+‼️需要node运行环境‼️
 1. 克隆项目
 ```
 git clone https://github.com/meterXu/mtDNS.git
