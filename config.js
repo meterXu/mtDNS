@@ -1,12 +1,12 @@
-var fs=require('fs');
-var file="config.json";
-var result;
-exports.gobal = function()
+const fs=require('fs');
+const file="config.json";
+let result;
+exports.global = function()
 {
     if(!result){
         result=JSON.parse(fs.readFileSync(file));
     }
-    return result.gobal;
+    return result.global;
 }
 exports.param=function(){
     if(!result){

@@ -1,6 +1,6 @@
-var main = require("./dns");
-var schedule = require("node-schedule");
-var saveIp;
+const main = require("./dns");
+const schedule = require("node-schedule");
+let saveIp;
 
 /**
  * 循环执行，判断ip是否变化，ip变化则解析域名,默认每分钟的第30秒触发
@@ -9,7 +9,7 @@ console.log(new Date() + "：每30秒开始域名解析,请耐心等待...")
 schedule.scheduleJob("*/30 * * * * *", function () {
    watchIpChange();
 });
-var watchIpChange=function() {
+const watchIpChange=function() {
     try {
         //获取ip地址
         main.getIp(function (ip) {

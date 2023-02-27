@@ -17,7 +17,7 @@ num = input('子域名个数 (>=1) : ')
 print('\n')
 
 # 初始化
-final_write = "\n" + "{\n" + "    \"gobal\": {\n" + "        \"apiAddress\": \"https://alidns.aliyuncs.com\",\n" + "        \"ipaddressUrl\": \"https://ip.isaacxu.com/api/ip\",\n" + "        \"AccessKeyId\": \"" + akid + "\",\n" + "        \"AccessKeySecret\": \"" + aks +"\",\n" + "        \"DomainName\": \"" + domain_name + "\"\n" + "    },\n" + "   \"param\":[\n"
+final_write = "\n" + "{\n" + "    \"global\": {\n" + "        \"apiAddress\": \"https://alidns.aliyuncs.com\",\n" + "        \"ipaddressUrl\": \"https://ip.isaacxu.com/api/ip\",\n" + "        \"AccessKeyId\": \"" + akid + "\",\n" + "        \"AccessKeySecret\": \"" + aks +"\",\n" + "        \"DomainName\": \"" + domain_name + "\"\n" + "    },\n" + "   \"param\":[\n"
 
 # 循环添加子域名
 for i in range(0,int(num)) :
