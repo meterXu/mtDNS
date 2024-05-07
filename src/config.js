@@ -5,7 +5,7 @@ require('dotenv').config({path: `${rootPath}/.env.${process.env.NODE_ENV}`});
 module.exports={
     global: {
         "apiAddress": "https://alidns.aliyuncs.com",
-        "ipaddressUrl": "https://ip.isaacxu.com/api/ip",
+        "ipaddressUrl": "https://ipinfo.io/ip",
         "AccessKeyId":process.env.AccessKeyId,
         "AccessKeySecret":process.env.AccessKeySecret,
     },
