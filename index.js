@@ -12,12 +12,12 @@ schedule.scheduleJob("*/3 * * * * *", function () {
 const watchIpChange=function() {
     try {
         //获取ip地址
-        main.getIp(function (ip) {
-            if (saveIp != ip) {
+        main.getIp(async function (ip) {
+            if (ip&&saveIp !== ip) {
                 saveIp = ip;
                 console.log(new Date() + "：获取IP成功，IP："+ip);
                 console.log(new Date() + "：开始域名解析");
-                main.analysisDns();
+                await main.analysisDns();
             } else {
                 console.log(new Date() + "：IP未变化，不解析域名");
             }

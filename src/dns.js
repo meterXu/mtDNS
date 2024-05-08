@@ -1,74 +1,74 @@
 const request = require('request');
 const config = require('./config.js');
-const AliCloudClient = require("aliyun-apisign");
+const Alidns20150109 = require('@alicloud/alidns20150109');
+const OpenApi = require('@alicloud/openapi-client');
+const Util = require('@alicloud/tea-util');
+const Tea = require('@alicloud/tea-typescript');
 let privateIp;
-const aliClient = new AliCloudClient({
-    AccessKeyId: config.global.AccessKeyId,
-    AccessKeySecret: config.global.AccessKeySecret,
-    serverUrl: config.global.apiAddress
+let _config = new OpenApi.Config({
+    accessKeyId: config.global.AccessKeyId,
+    accessKeySecret: config.global.AccessKeySecret,
 });
+_config.endpoint = `alidns.cn-beijing.aliyuncs.com`;
+const aliClient = new Alidns20150109.default(_config);
+let runtime = new Util.RuntimeOptions({});
 //域名解主程序
-const analysisRecords=function (){
-    let params=config.param;
-    params.forEach(param=>{
-        aliClient.get("/", {
-            Action: "DescribeDomainRecords",
-            DomainName: param.DomainName,
-            RRKeyWord:param.RRKeyWord
-        }).then(function (data) {
-            const record = data.body.DomainRecords.Record.find(c=>c.RR===param.RRKeyWord&&c.Type===param.Type)
-            if(record){
-                if(record.Value!==privateIp){
-                    dnsLog(param,"解析存在，IP变化，进行修改")
-                    aliClient.get("/",{
-                        Action:"UpdateDomainRecord",
-                        RecordId:record.RecordId,
-                        RR:record.RR,
-                        Type:param.Type,
-                        Value:privateIp,
-                        Priority:param.Priority
-                    }).then(function (data) {
-                        dnsLog(param,"解析修改成功")
-                    }).catch(function (err) {
-                        dnsLog(param,"解析修改失败，"+err.body.Message)
+const analysisRecords = async function () {
+    let params = config.param;
+    for (let param of params) {
+        try {
+            let describeDomainRecordsRequest = new Alidns20150109.DescribeDomainRecordsRequest({
+                keyWord: param.RRKeyWord,
+                domainName: param.DomainName,
+            });
+            let res = await aliClient.describeDomainRecordsWithOptions(describeDomainRecordsRequest, runtime)
+            const record = res.body.domainRecords.record[0]
+            if (record) {
+                if (privateIp&&record.value !== privateIp) {
+                    dnsLog(param, "解析存在，IP变化，进行修改")
+                    let updateDomainRecordRequest = new Alidns20150109.UpdateDomainRecordRequest({
+                        recordId: record.recordId,
+                        RR: record.RR,
+                        type: param.Type,
+                        value: privateIp,
+                        priority: param.Priority
                     });
-                }else{
-                    dnsLog(param,"解析存在，IP未变，无需更新！")
+                    await aliClient.updateDomainRecordWithOptions(updateDomainRecordRequest, runtime)
+                    dnsLog(param, "解析修改成功")
+                } else {
+                    dnsLog(param, "解析存在，IP未变，无需更新！")
                 }
-            }else{
-                dnsLog(param,"解析不存在，进行添加")
-                aliClient.get('/',{
-                    Action:"AddDomainRecord",
-                    DomainName:param.DomainName,
-                    RR:param.RRKeyWord,
-                    Type:param.Type,
-                    Value:privateIp,
-                    Priority:param.Priority
-                }).then(function (data){
-                    dnsLog(param,"解析添加成功")
-                }).catch(function(err){
-                    dnsLog(param,"解析添加失败，"+err.body.Message)
-                })
+            } else if(privateIp){
+                dnsLog(param, "解析不存在，进行添加")
+                let addDomainRecordRequest = new Alidns20150109.AddDomainRecordRequest({
+                    domainName: param.DomainName,
+                    RR: param.RRKeyWord,
+                    type: param.Type,
+                    value: privateIp,
+                    priority: param.Priority
+                });
+                await aliClient.addDomainRecordWithOptions(addDomainRecordRequest, runtime)
+                dnsLog(param, "解析添加成功")
             }
-        }).catch(function (err) {
-            dnsLog(param,`获取域名解析记录失败，${err.body.Message}`)
-        })
-    })
+        } catch (err) {
+            dnsLog(param, `解析失败，${err.message}`)
+        }
+    }
 };
 
-const dnsLog = function(param,msg) {
+const dnsLog = function (param, msg) {
     console.log(`${new Date()}：域名[${param.Type},${param.RRKeyWord},${param.Priority},${param.DomainName}]，${msg}`);
 }
 
 //获取ip地址
 exports.getIp = function (success) {
-    request(config.global.ipaddressUrl, function (error, response, body) {
-        body = body.replace('\n','');
+    request(config.global.ipaddressUrl, async function (error, response, body) {
+        body = body?.replace('\n', '');
         privateIp = body;
-        success(body);
+        success && await success(body);
     });
 };
 //域名解析
-exports.analysisDns = function () {
-    analysisRecords();
+exports.analysisDns = async function () {
+    await analysisRecords();
 };
