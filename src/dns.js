@@ -20,6 +20,7 @@ const analysisRecords = async function () {
             let describeDomainRecordsRequest = new Alidns20150109.DescribeDomainRecordsRequest({
                 keyWord: param.RRKeyWord,
                 domainName: param.DomainName,
+                searchMode: 'EXACT'
             });
             let res = await aliClient.describeDomainRecordsWithOptions(describeDomainRecordsRequest, runtime)
             const record = res.body.domainRecords.record[0]
