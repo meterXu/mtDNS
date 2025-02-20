@@ -3,7 +3,7 @@
 ![license](https://img.shields.io/github/license/meterXu/mtDNS.svg)  
 >动态域名解析服务，适用于阿里云购买的域名
 
-![mtDNS](http://7u.isaacxu.com/mtDns.png)
+![mtDNS](assets/mtDns.png)
 
 ## 支持项
 - [x] 实时监控IP变化
